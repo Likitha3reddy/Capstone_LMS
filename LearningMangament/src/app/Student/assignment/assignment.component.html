@@ -1,0 +1,30 @@
+
+
+<div class="container mt-4">
+  <h1 class="text-center " style="font-size: 30px;">Assignments</h1>
+    <div class="row">
+      <div class="col-md-4" *ngFor="let assignment of assignments">
+        <div class="card ">
+          <div class="card-body">
+            <h5 class="card-title">{{ assignment.title }}</h5>
+            <p class="card-text">{{ assignment.description }}</p>
+            <p class="card-text"><strong>Due Date:</strong> {{ assignment.dueDate }}</p>
+            <input
+              type="file"
+              class="form-control mb-2"
+              (change)="onFileSelected($event, assignment.assignmentId)"
+            />
+            <button
+              class="btn btn-primary"
+              [disabled]="!fileMap[assignment.assignmentId]"
+              (click)="submitAssignment(assignment.assignmentId, assignment.courseId)"
+            >
+              Submit Assignment
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  

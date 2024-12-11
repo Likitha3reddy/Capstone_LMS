@@ -1,0 +1,52 @@
+.card{
+    width:350px;
+    height: 500px;
+    // margin-left: 10px;
+    
+}
+
+@media(min-width:700px){
+    .card{
+        height: 500px;
+    }
+}
+@media(max-width:700px){
+    .card{
+        height: fit-content;
+    }
+}
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+  }
+  
+  .popup {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    width: 100%;
+  }
+  
+  .popup h3 {
+    margin-bottom: 20px;
+  }
+  
+  .popup .form-label {
+    font-weight: bold;
+  }
+  
+  .popup .btn {
+    margin-right: 10px;
+  }
+  
+  

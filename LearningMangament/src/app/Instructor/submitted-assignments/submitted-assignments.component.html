@@ -1,0 +1,55 @@
+
+<div class="spinner-container" *ngIf="isLoading">
+  <div class="spinner-border text-primary" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+</div>
+
+<div class="container mt-4" *ngIf="!isLoading">
+  <h2>Submissions</h2>
+  <div *ngIf="submissions.length > 0" class="table-responsive">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Assignment Title</th>
+          <th>Status</th>
+          <th>Grade</th>
+          <th>File</th>
+          <th>Update Grade</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let submission of submissions">
+          <td>{{ submission.assignmentTitle }}</td>
+          <td>{{ submission.status }}</td>
+          <td>{{ submission.grade || 'Not Graded' }}</td>
+          <td>
+            <a
+              [href]="'data:application/pdf;base64,' + submission.submissionFile"
+              download="submission.pdf"
+            >
+              Download File
+            </a>
+          </td>
+          <td>
+            <input
+              type="text"
+              [(ngModel)]="submission.gradeInput"
+              class="form-control"
+              placeholder="Enter grade"
+            />
+            <button
+              class="btn btn-primary mt-2"
+              (click)="updateGrade(submission.submissionId, submission.gradeInput)"
+            >
+              Update
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p *ngIf="submissions.length === 0" class="text-muted">
+    No submissions available for your assignments.
+  </p>
+</div>

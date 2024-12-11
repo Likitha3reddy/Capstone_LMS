@@ -1,0 +1,85 @@
+/* Outer Box Styling */
+.custom-box {
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+/* Card Hover Effect */
+.card-hover {
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; /* Smooth transitions for transform, shadow, and border */
+}
+
+.card-hover:hover {
+  transform: translateY(-5px); /* Slight upward lift */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow on hover */
+  border: 2px solid #6f42c1; /* Purple border on hover */
+}
+
+/* Circular Chart Styling */
+.circular-chart {
+  width: 150px;
+  height: 150px;
+}
+
+.circular-chart .circle-bg {
+  fill: none;
+  stroke: #f5f5f5; /* Background circle color */
+  stroke-width: 3.8; /* Circle thickness */
+}
+
+.circular-chart .circle {
+  fill: none;
+  stroke-width: 2.8; /* Main progress circle thickness */
+  stroke-linecap: round; /* Rounded edges for progress */
+  transform: rotate(-90deg); /* Start position of the circle */
+  transform-origin: 50% 50%; /* Rotation origin at the center */
+  stroke: #6f42c1; /* Purple color for the progress */
+  transition: stroke-dasharray 0.3s ease; /* Smooth animation for progress updates */
+}
+
+/* Centering Progress Circle */
+.progress-circle {
+  position: relative;
+  display: inline-block;
+}
+.spinner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full viewport height */
+  background-color: rgba(255, 255, 255, 0.8); /* Slight overlay effect */
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid rgba(0, 0, 0, 0.1);
+  border-top: 5px solid #4a47a3; /* Spinner color */
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.feedback-form-container {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.feedback-form-container h3 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.form-control,
+.form-select {
+  border-radius: 8px;
+  box-shadow: none;
+}

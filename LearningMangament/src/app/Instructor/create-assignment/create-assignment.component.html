@@ -1,0 +1,22 @@
+<div class="container">
+    <h3 class="text-center">Create Assignment</h3>
+    <form (ngSubmit)="onSubmit()">
+      <div class="form-group mt-3">
+        <label for="title">Title</label>
+        <input type="text" id="title" [(ngModel)]="assignment.title" name="title" class="form-control" required />
+      </div>
+      <div class="form-group mt-3">
+        <label for="description">Description</label>
+        <textarea id="description" [(ngModel)]="assignment.description" name="description" class="form-control" required></textarea>
+      </div>
+      <div class="form-group mt-3">
+        <label for="dueDate">Due Date</label>
+        <input type="date" id="dueDate" [(ngModel)]="assignment.dueDate" name="dueDate" class="form-control" />
+      </div>
+      <div class="d-flex align-items-center justify-content-between mt-4">
+        <button type="submit" class="btn btn-primary">Create Assignment</button>
+      <a href="/instructor-dashboard/courses" class="btn btn-outline-primary">Back to course</a>
+      </div>
+    </form>
+  </div>
+  

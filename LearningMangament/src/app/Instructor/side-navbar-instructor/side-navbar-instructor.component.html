@@ -1,0 +1,61 @@
+<div
+  class="sidenav"
+  [ngClass]="isLeftSidebarCollapsed() ? 'sidenav-collapsed' : ''"
+>
+  <div class="logo-container">
+    <button class="logo" (click)="toggleCollapse()">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+    @if (!isLeftSidebarCollapsed()) {
+      <div class="logo-text">Learn Hub</div>
+      <button class="btn-close" (click)="closeSidenav()">
+        <i class="fa-solid fa-xmark" style="color: #ffffff;"></i>
+      </button>
+    }
+  </div>
+  <div class="sidenav-nav mt-4">
+      <li class="sidenav-nav-item">
+        <a
+          class="sidenav-nav-link"
+          href="instructor-dashboard/profile"
+        >
+          <i class="fa-solid fa-user fa-2xs sidenav-link-icon" ></i>
+          @if (!isLeftSidebarCollapsed()) {
+            <span class="sidenav-link-text">Profile</span>
+          }
+        </a>
+      </li>
+      <li class="sidenav-nav-item mt-4">
+        <a
+          class="sidenav-nav-link"
+          href="instructor-dashboard/courses"
+        >
+          <i class="fa-solid fa-book-open sidenav-link-icon" ></i>
+          @if (!isLeftSidebarCollapsed()) {
+            <span class="sidenav-link-text">My Courses</span>
+          }
+        </a>
+      </li>
+      <li class="sidenav-nav-item mt-4">
+        <a
+          class="sidenav-nav-link"
+          href="instructor-dashboard/performance"
+        >
+          <i class="fa-solid fa-lg fa-graduation-cap sidenav-link-icon" ></i>
+
+          @if (!isLeftSidebarCollapsed()) {
+            <span class="sidenav-link-text">performance</span>
+          }
+        </a>
+      </li>
+      <li>
+        <button class="btn btn-outline-light delete mt-4" (click)="logout()">
+          <i class="fa-solid fa-right-from-bracket sidenav-link-icon me-3 " ></i> 
+          @if (!isLeftSidebarCollapsed()) {
+            <span class="sidenav-link-text">Logout</span>
+          }
+        </button>
+        
+      </li>
+  </div>
+</div>

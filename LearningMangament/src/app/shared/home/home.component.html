@@ -1,0 +1,72 @@
+<div class="wrapper">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg bg-light">
+        <div class="container">
+          <a class="navbar-brand" href="#" style="color: #FD9C0D; font-weight: 600;">Learn Hub</a>
+          <div class="d-flex align-items-center">
+            <!-- Search Bar with Icon -->
+            <div class="input-group" style="max-width: 300px;">
+              <span class="input-group-text bg-white border-0" id="search-icon">
+                <i class="fa fa-search" style="color: #6c757d;"></i>
+              </span>
+              <input
+                type="text"
+                class="form-control border-0 shadow-sm"
+                placeholder="Search courses..."
+                [(ngModel)]="searchTerm"
+                (input)="onSearchChange()"
+                style="box-shadow: none; font-size: 16px;"
+              />
+            </div>
+            <button class="btn btn-outline-primary p-2 loginBtn ms-2" type="button" (click)="login()">Login</button>
+            <a href="/student-dashboard/courses" *ngIf="authenticate" style="margin-left: 15px;">
+              <i class="fa-solid fa-circle-user fa-2xl" style="color: #240DFD;"></i>
+            </a>
+          </div>
+        </div>
+      </nav>
+      
+  
+  <!-- Courses Section -->
+  <section>
+    <div class="container mt-5">
+      <h2 class="mb-4 text-center fs-{6}" style="color: #FD9C0D;">Courses</h2>
+      <div class="row g-4 justify-content-center">
+        <!-- Card -->
+        <div
+          class="col-lg-3 col-md-5 d-flex align-items-stretch"
+          *ngFor="let course of filteredCourses"
+        >
+          <div class="card shadow-sm w-100 hover-effect">
+            <img
+              [src]="course.imageUrl"
+              class="card-img-top"
+              alt="{{ course.title }}"
+              style="height: 200px; object-fit: cover;"
+            />
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">{{ course.title }}</h5>
+              <p class="card-text text-muted">{{ course.description }}</p>
+              <div class="mt-auto text-center enrollDiv">
+                <span class="badge bg-primary text-white mb-2">{{ course.category }}</span>
+                <button
+                  class="btn btn-outline-primary w-100"
+                  (click)="enroll(course.courseId)"
+                >
+                  Enroll Now
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+  
+
+
+<!-- Footer -->
+<footer class="footer bg-dark text-center text-white mt-4 py-3 ">
+    &copy; 2024 Learn Hub. All Rights Reserved.
+</footer>

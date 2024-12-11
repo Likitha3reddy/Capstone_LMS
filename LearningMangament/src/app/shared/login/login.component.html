@@ -1,0 +1,74 @@
+<nav class="navbar navbar-expand-lg bg-light">
+    <div class="container">
+      <!-- Brand Name -->
+      <a class="navbar-brand" href="#" style="font-weight: 500;">Learn Hub</a>
+      <!-- Login Button -->
+      <div class="d-flex">
+        <button class="btn btn-outline-primary loginBtn" type="button" (click)="loginNav() ">Login</button>
+        
+      </div>
+    </div>
+  </nav>
+  
+  <section >
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-5 mt-5">
+          <div class="card shadow p-4">
+            <h3 class="text-center mb-4">Login</h3>
+            <form [formGroup]="loginForm" (ngSubmit)="loginToDashboard()">
+              <!-- Username -->
+              <div class="mb-3">
+                <label for="userName" class="form-label" style="font-weight: 500;">Username</label>
+                <input
+                  type="text"
+                  id="userName"
+                  class="form-control"
+                  formControlName="userName"
+                  placeholder="Enter your username"
+                  required
+                />
+                <div *ngIf="loginForm.get('userName')?.invalid && loginForm.get('userName')?.touched" class="form-text text-danger">
+                  <span *ngIf="loginForm.get('userName')?.errors?.['required']">Username is required.</span>
+                </div>
+              </div>
+  
+              <!-- Password -->
+              <div class="mb-3">
+                <label for="passwordHash" class="form-label" style="font-weight: 500;">Password</label>
+                <input
+                  [type]="passwordInputType"
+                  id="passwordHash"
+                  class="form-control"
+                  formControlName="passwordHash"
+                  placeholder="Enter your password"
+                  required
+                />
+                <div *ngIf="loginForm.get('passwordHash')?.invalid && loginForm.get('passwordHash')?.touched" class="form-text text-danger">
+                  <span *ngIf="loginForm.get('passwordHash')?.errors?.['required']">Password is required.</span>
+                </div>
+              </div>
+  
+              
+  
+              <!-- Show Password Checkbox -->
+              <div class="mb-3 form-check">
+                <input type="checkbox" (change)="togglePasswordVisibility($event)" class="form-check-input" id="showPassword" />
+                <label class="form-check-label" for="showPassword">Show Password</label>
+              </div>
+  
+              <!-- Submit Button -->
+              <div class="d-grid mt-4">
+                <button type="submit" class="btn btn-primary w-100" [disabled]="loginForm.invalid">Login</button>
+              </div>
+            </form>
+  
+            <div class="text-center mt-3">
+              <span>Don't have an account? <a href="/signup" class="text-primary">Sign up</a></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  

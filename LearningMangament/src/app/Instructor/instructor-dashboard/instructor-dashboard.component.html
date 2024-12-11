@@ -1,0 +1,9 @@
+<app-side-navbar-instructor
+  [isLeftSidebarCollapsed]="isLeftSidebarCollapsed()"
+  (changeIsLeftSidebarCollapsed)="changeIsLeftSidebarCollapsed($event)"
+/>
+
+<app-dashboard
+  [isLeftSidebarCollapsed]="isLeftSidebarCollapsed()"
+  [screenWidth]="screenWidth()"
+/>

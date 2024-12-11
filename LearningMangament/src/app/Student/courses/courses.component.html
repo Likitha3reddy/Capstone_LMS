@@ -1,0 +1,97 @@
+<section>
+  <div class="container mt-5">
+    <h2 class="mb-4">Courses</h2>
+    <div class="row g-3"> <!-- Add 'g-3' for gap -->
+      <div class="col-md-4 d-flex" *ngFor="let course of courses"> <!-- Add 'd-flex' for consistent alignment -->
+        <div class="card md-6 shadow-sm flex-fill  h-fit-content md-400" > <!-- Add 'flex-fill' to make cards uniform -->
+          <img [src]="course.imageUrl" class="card-img-top" alt="Course Image" style="height: 200px; object-fit: cover;">
+          <div class="card-body">
+            <h5 class="card-title">{{ course.title }}</h5>
+            <p class="card-text">{{ course.description }}</p>
+            <p class="text-muted">Category: {{ course.category }}</p>
+            <a [routerLink]="'/student-dashboard/course/' + course.courseId + '/modules'" class="btn btn-primary">
+              View Modules
+            </a>
+            <!-- <a [routerLink]="'/student-dashboard/course/modules'" class="btn btn-primary">
+              View Modules
+            </a> -->
+            <br>
+            <button class="btn btn-outline-success mt-3" (click)="openFeedbackPopup(course.courseId)">Give Feedback</button>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Feedback Modal -->
+<!-- Feedback Popup -->
+<div class="popup-overlay" *ngIf="showFeedbackPopup">
+  <div class="popup">
+    <h3>Give Feedback</h3>
+    <form (ngSubmit)="submitFeedback()">
+      <!-- Rating -->
+      <div class="mb-3">
+        <label for="rating" class="form-label">Rating</label>
+        <select [(ngModel)]="feedback.rating" name="rating" class="form-select" required>
+          <option value="" disabled>Select a rating</option>
+          <option *ngFor="let rating of [1, 2, 3, 4, 5]" [value]="rating">
+            {{ rating }}
+          </option>
+        </select>
+      </div>
+
+      <!-- Comment -->
+      <div class="mb-3">
+        <label for="comment" class="form-label">Comment</label>
+        <textarea
+          [(ngModel)]="feedback.comment"
+          name="comment"
+          rows="3"
+          class="form-control"
+          required
+        ></textarea>
+      </div>
+
+      <!-- Buttons -->
+      <button type="submit" class="btn btn-primary">Submit Feedback</button>
+      <button type="button" class="btn btn-secondary" (click)="closeFeedbackPopup()">Cancel</button>
+    </form>
+  </div>
+</div>
+
+<!-- Feedback Popup -->
+<div class="popup-overlay" *ngIf="showFeedbackPopup">
+  <div class="popup">
+    <h3>Give Feedback</h3>
+    <form (ngSubmit)="submitFeedback()">
+      <!-- Rating -->
+      <div class="mb-3">
+        <label for="rating" class="form-label">Rating</label>
+        <select [(ngModel)]="feedback.rating" name="rating" class="form-select" required>
+          <option value="" disabled>Select a rating</option>
+          <option *ngFor="let rating of [1, 2, 3, 4, 5]" [value]="rating">
+            {{ rating }}
+          </option>
+        </select>
+      </div>
+
+      <!-- Comment -->
+      <div class="mb-3">
+        <label for="comment" class="form-label">Comment</label>
+        <textarea
+          [(ngModel)]="feedback.comment"
+          name="comment"
+          rows="3"
+          class="form-control"
+          required
+        ></textarea>
+      </div>
+
+      <!-- Buttons -->
+      <button type="submit" class="btn btn-primary">Submit Feedback</button>
+      <button type="button" class="btn btn-secondary" (click)="closeFeedbackPopup()">Cancel</button>
+    </form>
+  </div>
+</div>

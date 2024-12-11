@@ -1,0 +1,43 @@
+
+<div class="container mt-5">
+    <h2 class="text-center">Add Module</h2>
+  
+    <form #moduleForm="ngForm" (ngSubmit)="onSubmit(moduleForm)">
+      <!-- Module Title -->
+      <div class="mb-3">
+        <label for="title" class="form-label">Module Title</label>
+        <input
+          type="text"
+          id="title"
+          class="form-control"
+          name="title"
+          [(ngModel)]="module.title"
+          required
+        />
+      </div>
+  
+      <!-- Module Description -->
+      <div class="mb-3">
+        <label for="description" class="form-label">Module Description</label>
+        <textarea
+          id="description"
+          class="form-control"
+          name="description"
+          rows="4"
+          [(ngModel)]="module.description"
+          required
+        ></textarea>
+      </div>
+  
+      <!-- Submit and Back Buttons -->
+      <div class="d-flex justify-content-between">
+        <button type="submit" class="btn btn-primary" [disabled]="!moduleForm.valid">
+          Add Module
+        </button>
+        <a [routerLink]="['/instructor-dashboard/courses']" class="btn btn-secondary">
+          Back to Courses
+        </a>
+      </div>
+    </form>
+  </div>
+  

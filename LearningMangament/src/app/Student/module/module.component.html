@@ -1,0 +1,125 @@
+<div class="spinner-container" *ngIf="isLoading">
+  <div class="spinner"></div>
+</div>
+
+<!-- Modules Section -->
+<div *ngIf="!isLoading && modules.length > 0" class="container my-5">
+  <h2 class="text-primary mb-4">Modules</h2>
+  <div *ngFor="let module of modules; let i = index" class="mb-5">
+    <div class="card shadow-sm border-primary">
+      <div class="card-body">
+        <!-- Numbered Module Heading -->
+        <h3
+          class="card-title"
+          style="font-family: 'Arial', sans-serif; font-size: 1.75rem; color: #4a47a3; font-weight: 500;"
+        >
+          Module {{ i + 1 }}: {{ module.title }}
+        </h3>
+        <p class="card-text text-muted" style="font-size: 1.1rem;">
+          {{ module.description }}
+        </p>
+        <div class="row">
+          <!-- Video Section -->
+          <div *ngFor="let content of module.contents" class="col-12 mb-4">
+            <div *ngIf="content.contentType === 'VIDEO'" class="card border-0">
+              <div class="card-body">
+                <h5
+                  class="text-primary mb-3"
+                  style="font-family: 'Verdana', sans-serif; font-size: 1.5rem;"
+                >
+                  Video Content
+                </h5>
+                <video
+                  [src]="getSafeContent(content)"
+                  controls
+                  class="w-100 rounded shadow-sm"
+                ></video>
+              </div>
+              <div class="progress mt-3">
+                <div
+                  class="progress-bar"
+                  role="progressbar"
+                  [style.width.%]="progressData[module.moduleId] || 0"
+                  [attr.aria-valuenow]="progressData[module.moduleId] || 0"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                >
+                  {{ progressData[module.moduleId] || 0 }}%
+                </div>
+              </div>
+            </div>
+
+            <!-- PDF Section -->
+            <div *ngIf="content.contentType === 'PDF'" class="card border-0">
+              <div class="card-body">
+                <h5
+                  class="text-success mb-3"
+                  style="font-family: 'Verdana', sans-serif; font-size: 1.5rem;"
+                >
+                  PDF Document
+                </h5>
+                <iframe
+                  [src]="getSafeContent(content)"
+                  class="w-100 rounded shadow-sm"
+                  height="400"
+                ></iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- No Modules Section -->
+<div *ngIf="!isLoading && modules.length == 0" class="d-flex justify-content-center align-items-center vh-100">
+  <div class="text-center p-4 rounded border shadow-lg bg-light" style="max-width: 500px;">
+    <h4 class="text-primary mb-3">No Modules Available</h4>
+    <p class="text-muted">Modules are currently unavailable. Stay tuned, they'll be added soon!</p>
+  </div>
+</div>
+
+
+<!--feedback -->
+<div class="feedback-form-container">
+  <h3>Submit Feedback</h3>
+  <form (ngSubmit)="submitFeedback()">
+    <!-- Rating Dropdown -->
+    <div class="mb-3">
+      <label for="rating" class="form-label">Rating</label>
+      <select
+        id="rating"
+        class="form-select"
+        [(ngModel)]="feedback.rating"
+        name="rating"
+        required
+      >
+        <option value="" disabled>Select a rating</option>
+        <option *ngFor="let rating of [1, 2, 3, 4, 5]" [value]="rating">
+          {{ rating }}
+        </option>
+      </select>
+    </div>
+
+    <!-- Comment/Description -->
+    <div class="mb-3">
+      <label for="comment" class="form-label">Comment</label>
+      <textarea
+        id="comment"
+        class="form-control"
+        [(ngModel)]="feedback.comment"
+        name="comment"
+        rows="4"
+        placeholder="Enter your feedback"
+        required
+      ></textarea>
+    </div>
+
+    <!-- Submit Button -->
+    <button type="submit" class="btn btn-primary" [disabled]="!feedback.rating || !feedback.comment.trim()">
+      Submit Feedback
+    </button>
+  </form>
+</div>
+

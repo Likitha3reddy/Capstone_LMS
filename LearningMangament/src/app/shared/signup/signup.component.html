@@ -1,0 +1,118 @@
+<nav class="navbar navbar-expand-lg bg-light">
+    <div class="container">
+        <!-- Brand Name -->
+        <a class="navbar-brand" href="#" style="font-weight: 500;">Learn Hub</a>
+        <!-- Login Button -->
+        <div class="d-flex">
+            <button class="btn btn-outline-primary" type="button" (click)="login()">Login</button>
+            
+        </div>
+    </div>
+</nav>
+
+<section>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-5 mt-5">
+                <div class="card shadow p-4">
+                    <h3 class="text-center mb-4">Sign Up</h3>
+                    <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+                        <!-- Username -->
+                        <div class="mb-3">
+                            <label for="userName" class="form-label">Username</label>
+                            <input
+                                type="text"
+                                id="userName"
+                                class="form-control"
+                                formControlName="userName"
+                                placeholder="Enter your username"
+                                required
+                            />
+                            <div *ngIf="signupForm.get('userName')?.invalid && signupForm.get('userName')?.touched" class="form-text text-danger">
+                                <span *ngIf="signupForm.get('userName')?.errors?.['required']">Username is required.</span>
+                                <span *ngIf="signupForm.get('userName')?.errors?.['minlength']">Username must be at least 3 characters long.</span>
+                            </div>
+                        </div>
+
+                        <!-- Password -->
+                        <div class="mb-3">
+                            <label for="passwordHash" class="form-label">Password</label>
+                            <input
+                                type="password"
+                                id="passwordHash"
+                                class="form-control"
+                                formControlName="passwordHash"
+                                placeholder="Enter your password"
+                                required
+                            />
+                            <div *ngIf="signupForm.get('passwordHash')?.invalid && signupForm.get('passwordHash')?.touched" class="form-text text-danger">
+                                <span *ngIf="signupForm.get('passwordHash')?.errors?.['required']">Password is required.</span>
+                                <span *ngIf="signupForm.get('passwordHash')?.errors?.['minlength']">Password must be at least 6 characters long.</span>
+                            </div>
+                        </div>
+
+                        <!-- Email -->
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input
+                                type="email"
+                                id="email"
+                                class="form-control"
+                                formControlName="email"
+                                placeholder="Enter your email"
+                                required
+                            />
+                            <div *ngIf="signupForm.get('email')?.invalid && signupForm.get('email')?.touched" class="form-text text-danger">
+                                <span *ngIf="signupForm.get('email')?.errors?.['required']">Email is required.</span>
+                                <span *ngIf="signupForm.get('email')?.errors?.['email']">Invalid email address.</span>
+                            </div>
+                        </div>
+
+                        <!-- Phone Number -->
+                        <div class="mb-3">
+                            <label for="phoneNumber" class="form-label">Phone Number</label>
+                            <input
+                                type="tel"
+                                id="phoneNumber"
+                                class="form-control"
+                                formControlName="phoneNumber"
+                                placeholder="Enter your phone number"
+                                required
+                            />
+                            <div *ngIf="signupForm.get('phoneNumber')?.invalid && signupForm.get('phoneNumber')?.touched" class="form-text text-danger">
+                                <span *ngIf="signupForm.get('phoneNumber')?.errors?.['required']">Phone number is required.</span>
+                                <span *ngIf="signupForm.get('phoneNumber')?.errors?.['pattern']">Invalid phone number format.</span>
+                            </div>
+                        </div>
+
+                        <!-- Role -->
+                        <div class="mb-3">
+                            <label for="role" class="form-label">Role</label>
+                            <select id="role" class="form-select" formControlName="role" required>
+                                <option value="student">Student</option>
+                                <option value="admin">Admin</option>
+                                <option value="instructor">Instructor</option>
+                            </select>
+                        </div>
+
+                        <!-- Is Active -->
+                        <div class="mb-3">
+                            <label for="isActive" class="form-label">Is Active</label>
+                            <select id="isActive" class="form-select" formControlName="isActive" required>
+                                <option value="true">Active</option>
+                                <option value="false">Inactive</option>
+                            </select>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <button type="submit" class="btn btn-primary w-100" [disabled]="signupForm.invalid">Sign Up</button>
+                    </form>
+
+                    <div class="text-center mt-3">
+                        <span>Already have an account? <a (click)="login()" class="text-primary" style="cursor: pointer;">Login</a></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

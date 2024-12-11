@@ -1,0 +1,54 @@
+<div class="container mt-5">
+    <h2>Create Quiz</h2>
+    <form>
+      <div class="mb-3">
+        <label for="quizTitle" class="form-label">Quiz Title</label>
+        <input
+          type="text"
+          id="quizTitle"
+          [(ngModel)]="quizTitle"
+          name="quizTitle"
+          class="form-control"
+          required
+        />
+      </div>
+  
+      <div *ngFor="let question of questions; let i = index" class="mb-3">
+        <h5>Question {{ i + 1 }}</h5>
+        <input
+          type="text"
+          [(ngModel)]="question.questionText"
+          name="questionText{{ i }}"
+          class="form-control"
+          placeholder="Enter question"
+          required
+        />
+        <div *ngFor="let option of question.options; let j = index" class="mb-2">
+          <input
+            type="text"
+            [(ngModel)]="question.options[j]"
+            name="option{{ i }}{{ j }}"
+            class="form-control"
+            placeholder="Option {{ j + 1 }}"
+            required
+          />
+        </div>
+        <label for="correctOption{{ i }}">Correct Option</label>
+        <select
+          id="correctOption{{ i }}"
+          [(ngModel)]="question.correctOption"
+          name="correctOption{{ i }}"
+          class="form-select"
+          required
+        >
+          <option *ngFor="let opt of question.options; let j = index" [value]="j + 1">
+            Option {{ j + 1 }}
+          </option>
+        </select>
+      </div>
+  
+      <button type="button" class="btn btn-secondary" (click)="addQuestion()">Add Question</button>
+      <button type="button" class="btn btn-primary" (click)="createQuiz()">Create Quiz</button>
+    </form>
+  </div>
+  

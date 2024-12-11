@@ -1,0 +1,52 @@
+/* User Icon Container Styling */
+.user-icon-container {
+    width: 150px;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  /* Circular Container Styling */
+.circular-icon-container {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%; /* Makes the container circular */
+    background-color: #e0e7ff; /* Light purple background */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional shadow */
+  }
+  
+  /* User Icon SVG Styling */
+  .user-icon-svg {
+    width: 50%;
+    height: 50%;
+    fill: #5a67d8; /* Dark purple for the icon */
+  }
+  
+  
+  .user-icon svg {
+    width: 100%; /* Ensures the SVG scales with the container */
+    height: 100%;
+    fill: #5a67d8; /* Adjust the color of the icon */
+  }
+  
+  .card {
+    border-radius: 10px;
+  }
+  
+  .card-body {
+    padding: 2rem;
+  }
+  
+  h4 {
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+  
+  a {
+    text-decoration: none;
+    color: #5a67d8;
+  }
+  

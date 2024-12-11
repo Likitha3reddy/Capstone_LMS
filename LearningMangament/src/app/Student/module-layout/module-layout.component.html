@@ -1,0 +1,115 @@
+
+<div class="spinner-container" *ngIf="isLoading">
+    <div class="spinner"></div>
+</div>
+
+<div class="module-layout" *ngIf="!isLoading">
+    <!-- Sidebar with modules -->
+    <div class="module-sidebar ">
+        <h3 class="text-center" style="font-weight: 500; font-size: 20px;color:dodgerblue">Modules</h3>
+        <div class="accordion">
+            <!-- Loop through modules -->
+            <div *ngFor="let module of modules" class="accordion-item">
+                <!-- Module Header -->
+                <button class="accordion-header" (click)="toggleModule(module.moduleId)">
+                    {{ module.title }}
+                </button>
+
+                <!-- Module Content -->
+                <div *ngIf="expandedModuleId === module.moduleId" class="accordion-content">
+                    <ul class="content-list">
+                        <li
+                            *ngFor="let content of moduleContent[module.moduleId]"
+                            (click)="onContentSelect(content)"
+                            [class.selected]="selectedContent?.contentId === content.contentId"
+                        >
+                            <span *ngIf="content.contentType === 'VIDEO'">🎥 Video</span>
+                            <span *ngIf="content.contentType === 'PDF'">📄 Document</span>
+                            <a>{{ content.title }}</a>
+                        </li>
+                        <li (click)="onQuizSelect(module.moduleId)">
+                            📝 Quiz
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Display Selected Content -->
+    <div class="module-display">
+        <ng-container *ngIf="selectedContent">
+            <!-- Display video -->
+            <ng-container *ngIf="selectedContent.contentType === 'VIDEO'">
+                <video controls [src]="selectedContent.urlOrPath" class="content-video"></video>
+            </ng-container>
+
+            <!-- Display PDF -->
+            <ng-container *ngIf="selectedContent.contentType === 'PDF'">
+                <iframe [src]="selectedContent.urlOrPath" frameborder="0" class="content-pdf"></iframe>
+            </ng-container>
+        </ng-container>
+
+        <!-- Display Quiz -->
+    <ng-container *ngIf="isQuizSelected" >
+        <div *ngIf="questions.length > 0; else noQuestions">
+            <h2 class="text-center mb-4">Quiz</h2>
+        
+            <!-- Quiz Results at the Top -->
+            <div *ngIf="results.length > 0" class="alert alert-info text-center">
+              <h4>Quiz Results</h4>
+              <p><strong>Total Correct:</strong> {{ totalCorrect }} / {{ questions.length }}</p>
+            </div>
+        
+            <form (ngSubmit)="submitQuiz()">
+              <div *ngFor="let question of questions" class="card mb-3">
+                <div class="card-body">
+                  <h5 class="card-title">{{ question.questionText }}</h5>
+                  <div *ngFor="let option of ['option1', 'option2', 'option3', 'option4']; let i = index" class="form-check">
+                    <label class="form-check-label d-block">
+                      <input
+                        type="radio"
+                        [value]="i + 1"
+                        name="question{{ question.id }}"
+                        class="form-check-input"
+                        (change)="selectAnswer(question.id, i + 1)"
+                        [disabled]="results.length > 0"
+                      />
+                      {{ question[option] }}
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <button *ngIf="results.length === 0" type="submit" class="btn btn-primary btn-block mt-4">Submit Quiz</button>
+            </form>
+          </div>
+        
+          <ng-template #noQuestions>
+            <p class="text-center text-muted">No questions available for this module.</p>
+          </ng-template>
+<!--   
+          <br>
+        <div *ngIf="results.length > 0">
+          <h3>Quiz Results</h3>
+          <p>Total Correct: {{ totalCorrect }} / {{ questions.length }}</p>
+          <ul>
+            <li *ngFor="let result of results">
+              Question: {{ result.isCorrect ? 'Correct' : 'Wrong' }}
+            </li>
+          </ul>
+        </div> -->
+      </ng-container>
+
+        <!-- Default message -->
+        <ng-container *ngIf="!selectedContent">
+            <p>Select a content item to display it here.</p>
+        </ng-container>
+    </div>
+</div>
+
+<div *ngIf="!isLoading && modules.length == 0" class="d-flex justify-content-center align-items-center vh-100">
+    <div class="text-center p-4 rounded border shadow-lg bg-light" style="max-width: 500px;">
+      <h4 class="text-primary mb-3">No Modules Available</h4>
+      <p class="text-muted">Modules are currently unavailable. Stay tuned, they'll be added soon!</p>
+    </div>
+  </div>

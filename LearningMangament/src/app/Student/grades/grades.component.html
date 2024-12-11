@@ -1,0 +1,113 @@
+
+<div class="container my-5">
+  <div class="row g-4">
+    <!-- Circular Progress Card -->
+    <div class="col-md-6">
+      <div class="custom-box">
+        <h4 class="mb-4 text-center">Courses Performance</h4>
+        <div class="d-flex justify-content-center align-items-center">
+          <div class="position-relative">
+            <div class="progress-circle text-center">
+              <span
+                class="position-absolute w-100 h-100 d-flex align-items-center justify-content-center"
+                style="top: 0; left: 0; font-size: 24px; font-weight: bold;"
+              >
+                {{ averagePercentage }}%
+              </span>
+              <svg viewBox="0 0 36 36" class="circular-chart purple">
+                <path
+                  class="circle-bg"
+                  d="M18 2.0845
+                    a 15.9155 15.9155 0 0 1 0 31.831
+                    a 15.9155 15.9155 0 0 1 0 -31.831"
+                />
+                <path
+                  class="circle"
+                  [attr.stroke-dasharray]="averagePercentage + ', 100'"
+                  d="M18 2.0845
+                    a 15.9155 15.9155 0 0 1 0 31.831
+                    a 15.9155 15.9155 0 0 1 0 -31.831"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--average  grade -->
+    <div class="col-md-6">
+      <div class="custom-box">
+        <h4 class="mb-4 text-center">Assignment Performance</h4>
+        <div class="d-flex justify-content-center align-items-center">
+          <div class="position-relative">
+            <div class="progress-circle text-center">
+              <span
+                class="position-absolute w-100 h-100 d-flex align-items-center justify-content-center"
+                style="top: 0; left: 0; font-size: 24px; font-weight: bold;"
+              >
+              {{ averageGrade.toFixed(2) }}%
+              </span>
+              <svg viewBox="0 0 36 36" class="circular-chart purple">
+                <path
+                  class="circle-bg"
+                  d="M18 2.0845
+                    a 15.9155 15.9155 0 0 1 0 31.831
+                    a 15.9155 15.9155 0 0 1 0 -31.831"
+                />
+                <path
+                  class="circle"
+                  [attr.stroke-dasharray]="averageGrade + ', 100'"
+                  d="M18 2.0845
+                    a 15.9155 15.9155 0 0 1 0 31.831
+                    a 15.9155 15.9155 0 0 1 0 -31.831"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Courses & Badges Card -->
+    <div class="col-md-6">
+      <div class="custom-box">
+        <div class="container my-4">
+          <h5 class="mb-4 text-center">Courses & Badges</h5>
+          <div class="row g-3">
+            <!-- Courses Enrolled -->
+            <div class="col-12">
+              <div class="card card-hover text-center shadow-sm p-3 w-100">
+                <div class="d-flex align-items-center justify-content-around">
+                  <img
+                    src="https://img.icons8.com/ios-filled/50/000000/report-card.png"
+                    alt="Courses Enrolled"
+                    height="40px"
+                    class="me-2"
+                  />
+                  <h6 class="mb-0">Courses Enrolled</h6>
+                  <h4 class="text-primary mb-0">{{ courseCount }}</h4>
+                </div>
+              </div>
+            </div>
+            <!-- Courses Completed -->
+            <div class="col-12">
+              <div class="card card-hover text-center shadow-sm p-3 w-100">
+                <div class="d-flex align-items-center justify-content-around">
+                  <img
+                    src="https://img.icons8.com/ios-filled/50/000000/checklist.png"
+                    alt="Courses Completed"
+                    height="40px"
+                    class="me-2"
+                  />
+                  <h6 class="mb-0">Courses Completed</h6>
+                  <h4 class="text-primary mb-0">0</h4>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

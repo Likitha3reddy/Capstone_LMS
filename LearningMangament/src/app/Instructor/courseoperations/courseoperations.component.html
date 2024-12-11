@@ -1,0 +1,51 @@
+
+<div class="container-fluid">
+  <div class="row">
+    <!-- Sidebar -->
+    <div class="col-md-3 p-4">
+      <ul class="nav flex-column">
+        <li class="nav-item mb-3">
+          <a
+            class="nav-link p-3 text-center border rounded operation-item"
+            routerLink="addModule"
+            routerLinkActive="active-item"
+          >
+            Add Modules
+          </a>
+        </li>
+        <li class="nav-item mb-3">
+          <a
+            class="nav-link p-3 text-center border rounded operation-item"
+            routerLink="viewModule"
+            routerLinkActive="active-item"
+          >
+            View Modules
+          </a>
+        </li>
+        <li class="nav-item mb-3">
+          <a
+            class="nav-link p-3 text-center border rounded operation-item"
+            routerLink="createAssignment"
+            routerLinkActive="active-item"
+          >
+            Create Assignment
+          </a>
+        </li>
+        <li class="nav-item mb-3">
+          <a
+            class="nav-link p-3 text-center border rounded operation-item"
+            routerLink="submittedAss"
+            routerLinkActive="active-item"
+          >
+            View Submissions
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Content Area -->
+    <div class="col-md-9 p-4">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

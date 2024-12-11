@@ -1,0 +1,125 @@
+<div class="container my-5">
+  <div class="row g-4">
+    <!-- Left Section: Course Enrollments -->
+    <div class="col-lg-8">
+      <div class="custom-box p-4 w-100 h-100">
+        <h2 class="text-center mb-4">Course Enrollments</h2>
+        <div *ngIf="coursesWithEnrollments.length > 0">
+          <table class="table table-hover table-bordered align-middle">
+            <thead class="table-primary">
+              <tr class="text-center">
+                <th scope="col">S.No</th>
+                <th scope="col">Course Name</th>
+                <th scope="col">Enrollment Count</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr
+                *ngFor="let course of coursesWithEnrollments; let i = index"
+                class="text-center table-row-hover"
+              >
+                <td>{{ i + 1 }}</td>
+                <td class="text-start">{{ course.title }}</td>
+                <td>{{ course.enrollmentCount }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      
+        <!-- No Courses Found -->
+        <div *ngIf="coursesWithEnrollments.length === 0" class="text-center">
+          <p class="alert alert-warning">No courses or enrollments found.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Section: Courses & Badges -->
+    <div class="col-lg-4">
+      <div class="custom-box p-4 w-100 h-100">
+        <h5 class="mb-4 text-center">Courses & Badges</h5>
+        <div class="row g-3">
+          <!-- Courses Created -->
+          <div class="col-12">
+            <div class="card shadow-sm p-3 hover-card d-flex flex-row align-items-center">
+              <img
+                src="https://img.icons8.com/ios-filled/50/000000/report-card.png"
+                alt="Courses Created"
+                height="40px"
+              />
+              <div class="ms-3 d-flex justify-content-between w-100 align-items-center">
+                <h6 class="mb-0 flex-grow-1">Courses Created</h6>
+                <h4 class="text-primary mb-0">{{ courses.length }}</h4>
+              </div>
+            </div>
+          </div>
+
+          <!-- Feedback -->
+          <div class="col-12">
+            <div class="card shadow-sm p-3 hover-card d-flex flex-row align-items-center">
+              <img
+                src="https://img.icons8.com/ios-filled/50/000000/medal.png"
+                alt="Feedback"
+                height="40px"
+              />
+              <div class="ms-3 d-flex justify-content-between w-100 align-items-center">
+                <h6 class="mb-0 flex-grow-1">Feedback</h6>
+                <h4 class="text-primary mb-0">1</h4>
+              </div>
+            </div>
+          </div>
+
+
+          <!---->
+    
+
+          <!---->
+          
+          
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!---------------->
+  <div class="row-md-6 performance"  >
+    <div class="custom-box">
+      <h4 class="mb-4 text-center" style="margin-top:50px ;">Student  Performance</h4>
+      <div *ngFor="let user of userProgressData" >
+        <h4 class="mb-4 text-center">{{ user.userName }}</h4>
+        <div class="d-flex justify-content-center align-items-center">
+          <!-- <h4 class="mb-4 text-center">{{ user.userName }}</h4> -->
+          <div class="position-relative">
+            <div class="progress-circle text-center">
+              <span
+                class="position-absolute w-100 h-100 d-flex align-items-center justify-content-center"
+                style="top: 0; left: 0; font-size: 24px; font-weight: bold;"
+              >
+              {{ user.averageProgress.toFixed(2)}}%
+              </span>
+              <svg viewBox="0 0 36 36" class="circular-chart purple" style="margin-bottom: 50px;">
+                <path
+                  class="circle-bg"
+                  d="M18 2.0845
+                    a 15.9155 15.9155 0 0 1 0 31.831
+                    a 15.9155 15.9155 0 0 1 0 -31.831"
+                />
+                <path
+                  class="circle"
+                  [attr.stroke-dasharray]="user.averageProgress + ', 100'"
+                  d="M18 2.0845
+                    a 15.9155 15.9155 0 0 1 0 31.831
+                    a 15.9155 15.9155 0 0 1 0 -31.831"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      
+    </div>
+  </div>
+  <!------------>
+  
+</div>

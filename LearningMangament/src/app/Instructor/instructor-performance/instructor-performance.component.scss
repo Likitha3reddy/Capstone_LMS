@@ -1,0 +1,122 @@
+/* Custom Box Styling */
+.custom-box {
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  overflow: hidden; /* Ensures contents do not overflow */
+  height: 100%; /* Makes it stretch evenly */
+}
+
+/* Table Row Hover Effect */
+.table-row-hover:hover {
+  background-color: #f0f8ff; /* Light blue background on hover */
+  transition: background-color 0.3s ease; /* Smooth hover transition */
+}
+
+/* Inner Cards Styling */
+.hover-card {
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  border-radius: 10px;
+  width: 100%; /* Ensures full width */
+}
+
+.hover-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Title and Text Alignments */
+.card-title {
+  font-weight: 500;
+  color: #333;
+  word-wrap: break-word; /* Allows the title to wrap if it exceeds width */
+  overflow-wrap: break-word;
+}
+
+.card-text {
+  font-size: 14px;
+  color: #555;
+  white-space: nowrap; /* Prevent the enrollment text from wrapping */
+}
+
+/* Ensures Flex Behavior and Proper Alignment */
+.card-body {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px;
+}
+
+/* Fix width of parent container */
+.container {
+  max-width: 1200px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .col-lg-8,
+  .col-lg-4 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+  .card-body {
+    flex-wrap: wrap;
+  }
+
+  .card-title {
+    white-space: normal;
+  }
+}
+.user-progress-card {
+  display: inline-block;
+  text-align: center;
+  background: #f9f9f9;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+  margin: 10px;
+}
+
+.circle-progress {
+  position: relative;
+  width: 120px;
+  height: 120px;
+}
+
+.circle-progress svg {
+  width: 120px;
+  height: 120px;
+  transform: rotate(-90deg);
+}
+
+
+.circular-chart {
+  width: 150px;
+  height: 150px;
+}
+
+.circular-chart .circle-bg {
+  fill: none;
+  stroke: #f5f5f5;
+  stroke-width: 3.8;
+}
+
+.circular-chart .circle {
+  fill: none;
+  stroke-width: 2.8;
+  stroke-linecap: round;
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+  stroke: #6f42c1; /* Purple color */
+  transition: stroke-dasharray 0.3s ease;
+}
+
+.progress-circle {
+  position: relative;
+  display: inline-block;
+}
+.performance{
+  margin-top: 50px;
+  padding: 10px;
+}

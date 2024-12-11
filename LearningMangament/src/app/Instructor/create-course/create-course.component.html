@@ -1,0 +1,81 @@
+<div class="container mt-5">
+    <div class="card mx-auto" style="max-width: 500px;">
+      <div class="card-body">
+        <h3 class="card-title text-center">Add Course</h3>
+        <form (ngSubmit)="onSubmit()" #courseForm="ngForm">
+          <!-- Title -->
+          <div class="mb-3">
+            <label for="title" class="form-label">Course Title</label>
+            <input
+              type="text"
+              id="title"
+              class="form-control"
+              name="title"
+              [(ngModel)]="course.title"
+              placeholder="Enter course title"
+              required
+            />
+          </div>
+  
+          <!-- Description -->
+          <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea
+              id="description"
+              class="form-control"
+              name="description"
+              [(ngModel)]="course.description"
+              placeholder="Enter course description"
+              rows="3"
+              required
+            ></textarea>
+          </div>
+  
+          <!-- Category -->
+          <div class="mb-3">
+            <label for="category" class="form-label">Category</label>
+            <select
+              id="category"
+              class="form-select"
+              name="category"
+              [(ngModel)]="course.category"
+              required
+            >
+              <option value="" disabled>Select category</option>
+              <option value="Programming">Programming</option>
+              <option value="Web Development">Web Development</option>
+              <option value="Data Science">Data Science</option>
+              <option value="Security">Security</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+  
+          <!-- Image URL -->
+          <div class="mb-3">
+            <label for="imageUrl" class="form-label">Image URL</label>
+            <input
+              type="url"
+              id="imageUrl"
+              class="form-control"
+              name="imageUrl"
+              [(ngModel)]="course.imageUrl"
+              placeholder="Enter image URL"
+              required
+            />
+          </div>
+  
+          <!-- Submit Button -->
+          <div class="d-grid">
+            <button
+              type="submit"
+              class="btn btn-primary"
+              [disabled]="courseForm.invalid"
+            >
+              Submit
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  

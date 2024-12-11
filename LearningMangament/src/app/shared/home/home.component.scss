@@ -1,0 +1,58 @@
+/* Card hover effect */
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+.input-group-text {
+    border-radius: 20px 0 0 20px; /* Rounded corners for the left side */
+  }
+  
+  .form-control {
+    border-radius: 0 20px 20px 0; /* Rounded corners for the right side */
+    box-shadow: none; /* Remove default input shadow */
+  }
+  
+.hover-effect {
+    transition: transform 0.3s ease;
+    position: relative; /* Ensure proper positioning for child elements */
+    overflow: hidden; /* Clip overflowing elements */
+  }
+  
+  .hover-effect:hover {
+    transform: scale(1.04);
+  }
+  
+  .enrollDiv {
+    visibility: hidden; /* Initially hidden */
+    opacity: 0; /* Fully transparent */
+    transition: visibility 0s, opacity 0.3s ease-in-out; /* Smooth fade-in */
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: white;
+    text-align: center;
+    padding: 1rem;
+  }
+  
+  .hover-effect:hover .enrollDiv {
+    visibility: visible; /* Make it visible */
+    opacity: 1; /* Fully opaque */
+    z-index: 10; /* Bring content above other elements */
+  }
+.footer{
+    position:relative;
+    bottom: 0;
+}
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Full viewport height */
+  }
+  section {
+    flex: 1; /* Pushes footer to the bottom */
+  }
+  .footer {
+    position: relative; /* Ensure footer stays below */
+  }
